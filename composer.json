@@ -1,0 +1,32 @@
+{
+    "name": "sonatra/default-value-bundle",
+    "type": "symfony-bundle",
+    "description": "Sonatra Default Value Bundle",
+    "keywords": ["Default Value", "Object", "Entity", "Document"],
+    "homepage": "http://sonatra.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "François Pluchino",
+            "email": "francois.pluchino@sonatra.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.1"
+    },
+    "require-dev": {
+        "symfony/console": "~2.1",
+        "symfony/finder": "~2.1"
+    },
+    "autoload": {
+        "psr-0": { "Sonatra\\Bundle\\DefaultValueBundle": "" }
+    },
+    "target-dir": "Sonatra/Bundle/DefaultValueBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
