@@ -1,7 +1,10 @@
 Sonatra Default Value Bundle
 ============================
 
-The Sonatra DefaultValueBundle injects configurable default values ​​directly in the object properties.
+The Sonatra DefaultValueBundle creates or injects the default values ​​with a advanced configuration in the object.
+
+This bundle is not to replace the required default values ​​in the model, but allow an additional dynamic configuration
+in the model.
 
 Features include:
 

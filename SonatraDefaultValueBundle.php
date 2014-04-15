@@ -12,10 +12,18 @@
 namespace Sonatra\Bundle\DefaultValueBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler\DefaultValuePass;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
 class SonatraDefaultValueBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new DefaultValuePass());
+    }
 }
