@@ -19,6 +19,21 @@ use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractType;
 class DefaultType extends AbstractType
 {
     /**
+     * @var string
+     */
+    protected $class;
+
+    /**
+     * Constructor.
+     *
+     * @param string $class
+     */
+    public function __construct($class = 'default')
+    {
+        $this->class = $class;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getParent()
@@ -31,6 +46,6 @@ class DefaultType extends AbstractType
      */
     public function getClass()
     {
-        return 'default';
+        return $this->class;
     }
 }

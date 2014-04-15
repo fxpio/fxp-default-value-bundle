@@ -13,7 +13,7 @@ namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\ExceptionInterface;
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException;
+use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Extension\Core\Type\DefaultType;
 
 /**
  * The central registry of the Object Default Value component.
@@ -79,8 +79,9 @@ class ObjectRegistry implements ObjectRegistryInterface
                 }
             }
 
+            // fallback to default type
             if (!$type) {
-                throw new InvalidArgumentException(sprintf('Could not load object default value type "%s"', $name));
+                $type = new DefaultType($name);
             }
 
             $this->resolveAndAddType($type);
