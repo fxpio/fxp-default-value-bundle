@@ -22,8 +22,6 @@ class CoreExtension extends AbstractExtension
 {
     protected function loadTypes()
     {
-        return array(
-            //TODO new Type\ObjectType(),
-        );
+        return array();
     }
 }

@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('sonatra_default_value');
+        //$rootNode = $treeBuilder->root('sonatra_default_value');
 
         return $treeBuilder;
     }
