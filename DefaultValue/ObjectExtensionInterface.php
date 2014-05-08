@@ -25,7 +25,7 @@ interface ObjectExtensionInterface
      *
      * @return ObjectTypeInterface The type
      *
-     * @throws Exception\Exception if the given type is not supported by this extension
+     * @throws Exception\InvalidArgumentException if the given type is not supported by this extension
      */
     public function getType($classname);
 

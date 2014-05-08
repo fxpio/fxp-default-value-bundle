@@ -263,11 +263,12 @@ class ObjectConfigBuilder implements ObjectConfigBuilderInterface
     /**
      * Finds the reflection property.
      *
+     * @param string           $property
      * @param \ReflectionClass $reflection
      *
-     * @param \ReflectionProperty
+     * @return \ReflectionProperty
      *
-     * @throw InvalidArgumentException When the property is not found
+     * @throws InvalidArgumentException When the property is not found
      */
     protected function findReflectionProperty($property, \ReflectionClass $reflection)
     {

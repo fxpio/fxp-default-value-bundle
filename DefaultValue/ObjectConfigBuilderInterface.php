@@ -28,7 +28,7 @@ interface ObjectConfigBuilderInterface extends ObjectConfigInterface
     /**
      * Sets the data of the object default value.
      *
-     * @param array $data The data of the object default value
+     * @param mixed $data The data of the object default value
      *
      * @return ObjectConfigBuilderInterface
      */
@@ -51,7 +51,7 @@ interface ObjectConfigBuilderInterface extends ObjectConfigInterface
      *
      * @return ObjectConfigBuilderInterface
      */
-    public function setProperties(array $attributes);
+    public function setProperties(array $properties);
 
     /**
      * Builds and returns the object default value configuration.

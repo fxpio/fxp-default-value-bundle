@@ -31,8 +31,8 @@ interface ResolvedObjectTypeFactoryInterface
      *
      * @return ResolvedObjectTypeInterface
      *
-     * @throws Exception\UnexpectedTypeException If the types parent {@link ObjectTypeInterface::getParent()} is not a string
-     * @throws Exception\Exception               If the types parent can not be retrieved object default value any extension
+     * @throws Exception\UnexpectedTypeException  When unexpected type of argument
+     * @throws Exception\InvalidArgumentException When the object default value type classname does not exist
      */
     public function createResolvedType(ObjectTypeInterface $type, array $typeExtensions, ResolvedObjectTypeInterface $parent = null);
 }

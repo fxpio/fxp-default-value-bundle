@@ -28,7 +28,6 @@ interface ObjectRegistryInterface
      * @return ResolvedObjectTypeInterface The type
      *
      * @throws Exception\UnexpectedTypeException If the passed name is not a string
-     * @throws Exception\Exception               If the type can not be retrieved object default value any extension
      */
     public function getType($classname);
 

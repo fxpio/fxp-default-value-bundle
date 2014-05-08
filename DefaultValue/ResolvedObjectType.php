@@ -49,7 +49,8 @@ class ResolvedObjectType implements ResolvedObjectTypeInterface
      * @param ObjectTypeExtensionInterface[] $typeExtensions
      * @param ResolvedObjectTypeInterface    $parent
      *
-     * @throws Exception
+     * @throws InvalidArgumentException When the object default value type classname does not exist
+     * @throws UnexpectedTypeException  When unexpected type of argument
      */
     public function __construct(ObjectTypeInterface $innerType, array $typeExtensions = array(), ResolvedObjectTypeInterface $parent = null)
     {
