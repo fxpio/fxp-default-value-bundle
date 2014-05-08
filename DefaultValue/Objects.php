@@ -48,7 +48,7 @@ use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Extension\Core\CoreExtension;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-final class Blocks
+final class Objects
 {
     /**
      * Creates a object default value factory with the default configuration.
