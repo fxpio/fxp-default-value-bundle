@@ -21,9 +21,8 @@
         "symfony/finder": "~2.1"
     },
     "autoload": {
-        "psr-0": { "Sonatra\\Bundle\\DefaultValueBundle": "" }
+        "psr-4": { "Sonatra\\Bundle\\DefaultValueBundle\\": "" }
     },
-    "target-dir": "Sonatra/Bundle/DefaultValueBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
