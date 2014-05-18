@@ -1,9 +1,9 @@
-Getting Started With Sonatra DefaultValueBundle
-===============================================
+Getting Started
+===============
 
 ## Prerequisites
 
-This version of the bundle requires Symfony 2.1+ and Twitter bootstrap.
+This version of the bundle requires Symfony 2.1+.
 
 ## Installation
 
@@ -11,7 +11,6 @@ Installation is a quick, 2 step process:
 
 1. Download Sonatra DefaultValueBundle using composer
 2. Enable the bundle
-3. Configure the bundle (optionnal)
 
 ### Step 1: Download Sonatra DefaultValueBundle using composer
 
@@ -48,15 +47,6 @@ public function registerBundles()
         new Sonatra\Bundle\DefaultValueBundle\SonatraDefaultValueBundle(),
     );
 }
-```
-
-### Step 3: Configure the bundle (optionnal)
-
-You can override the default configuration adding `sonatra_web_interface` tree in `app/config/config.yml`.
-For see the reference of Sonatra DefaultValue Configuration, execute command:
-
-``` bash
-$ php app/console config:dump-reference SonatraDefaultValueBundle 
 ```
 
 ### Next Steps
