@@ -128,12 +128,6 @@ class ObjectRegistry implements ObjectRegistryInterface
     private function resolveAndAddType(ObjectTypeInterface $type)
     {
         $parentType = $type->getParent();
-
-        if ($parentType instanceof ObjectTypeInterface) {
-            $this->resolveAndAddType($parentType);
-            $parentType = $parentType->getClass();
-        }
-
         $typeExtensions = array();
 
         foreach ($this->extensions as $extension) {
