@@ -21,7 +21,7 @@ class UserExtension extends AbstractTypeExtension
      */
     public function buildObject(ObjectBuilderInterface $builder, array $options)
     {
-        $builder->setProperty('customField', 'foobar');
+
     }
 
     public function getExtendedType()

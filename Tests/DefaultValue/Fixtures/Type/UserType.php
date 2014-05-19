@@ -27,14 +27,6 @@ class UserType extends AbstractType
         return new $class($options['username'], $options['password']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildObject(ObjectBuilderInterface $builder, array $options)
-    {
-        $builder->setProperty('enabled', false);
-    }
-
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
