@@ -23,13 +23,13 @@ abstract class AbstractExtension implements ObjectExtensionInterface
      * The types provided by this extension.
      * @var array An array of ObjectTypeInterface
      */
-    private $types;
+    protected $types;
 
     /**
      * The type extensions provided by this extension.
      * @var array An array of ObjectTypeExtensionInterface
      */
-    private $typeExtensions;
+    protected $typeExtensions;
 
     /**
      * {@inheritdoc}
