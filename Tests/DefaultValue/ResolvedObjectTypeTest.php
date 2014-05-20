@@ -86,9 +86,6 @@ class ResolvedObjectTypeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('password', $instance->getPassword());
     }
 
-    /**
-     * @group fxp
-     */
     public function testInstanceBuilderWithDefaultType()
     {
         $type = new FooType();
