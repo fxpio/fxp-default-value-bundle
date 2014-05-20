@@ -16,14 +16,6 @@ use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
 
 class UserExtension extends AbstractTypeExtension
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function buildObject(ObjectBuilderInterface $builder, array $options)
-    {
-
-    }
-
     public function getExtendedType()
     {
         return 'Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object\User';
