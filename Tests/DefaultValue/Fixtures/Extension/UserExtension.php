@@ -12,7 +12,6 @@
 namespace Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Extension;
 
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractTypeExtension;
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
 
 class UserExtension extends AbstractTypeExtension
 {
