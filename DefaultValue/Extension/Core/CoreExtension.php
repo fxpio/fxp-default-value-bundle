@@ -20,6 +20,9 @@ use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractExtension;
  */
 class CoreExtension extends AbstractExtension
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function loadTypes()
     {
         return array();
