@@ -72,11 +72,4 @@ final class Objects
 
         return $builder;
     }
-
-    /**
-     * This class cannot be instantiated.
-     */
-    private function __construct()
-    {
-    }
 }
