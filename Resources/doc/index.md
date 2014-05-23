@@ -9,14 +9,14 @@ This version of the bundle requires Symfony 2.4+.
 
 Installation is a quick, 2 step process:
 
-1. Download Sonatra DefaultValueBundle using composer
+1. Download the bundle using composer
 2. Enable the bundle
 
-### Step 1: Download Sonatra DefaultValueBundle using composer
+### Step 1: Download the bundle using composer
 
 Add Sonatra DefaultValueBundle in your composer.json:
 
-``` js
+```js
 {
     "require": {
         "sonatra/default-value-bundle": "~1.0"
@@ -26,7 +26,7 @@ Add Sonatra DefaultValueBundle in your composer.json:
 
 Or tell composer to download the bundle by running the command:
 
-``` bash
+```bash
 $ php composer.phar update sonatra/web-interface-bundle
 ```
 
@@ -36,8 +36,7 @@ Composer will install the bundle to your project's `vendor/sonatra` directory.
 
 Enable the bundle in the kernel:
 
-``` php
-<?php
+```php
 // app/AppKernel.php
 
 public function registerBundles()
