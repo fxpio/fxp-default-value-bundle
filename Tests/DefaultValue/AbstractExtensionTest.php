@@ -21,16 +21,6 @@ use Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\TestExtension;
 class AbstractExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $ext;
-
-    protected function setUp()
-    {
-
-    }
-
-    /**
      * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException
      */
     public function testGetUnexistingType()
