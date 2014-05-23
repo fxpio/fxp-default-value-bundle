@@ -6,7 +6,7 @@
 
     <services>
         <!-- CoreType -->
-        <service id="test.sonatra_default_value.type.default" class="Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Type\UserType">
+        <service id="test.sonatra_default_value.type.user" class="Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Type\UserType">
             <tag name="sonatra_default_value.type" alias="Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object\User" />
         </service>
     </services>
