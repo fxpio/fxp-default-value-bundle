@@ -3,7 +3,7 @@ Getting Started
 
 ## Prerequisites
 
-This version of the bundle requires Symfony 2.1+.
+This version of the bundle requires Symfony 2.4+.
 
 ## Installation
 
