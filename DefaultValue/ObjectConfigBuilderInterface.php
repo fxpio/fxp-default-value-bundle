@@ -11,6 +11,8 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
+use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException;
+
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
@@ -41,6 +43,8 @@ interface ObjectConfigBuilderInterface extends ObjectConfigInterface
      * @param string $value The value of the property
      *
      * @return ObjectConfigBuilderInterface
+     *
+     * @throws BadMethodCallException When the data is empty
      */
     public function setProperty($name, $value);
 
@@ -50,6 +54,8 @@ interface ObjectConfigBuilderInterface extends ObjectConfigInterface
      * @param array $properties The properties
      *
      * @return ObjectConfigBuilderInterface
+     *
+     * @throws BadMethodCallException When the data is empty
      */
     public function setProperties(array $properties);
 

@@ -95,6 +95,10 @@ class ObjectConfigBuilder implements ObjectConfigBuilderInterface
      */
     public function getProperty($name)
     {
+        if (null === $this->data) {
+            throw new BadMethodCallException('BlockConfigBuilder methods cannot be accessed when the data is empty.');
+        }
+
         $methodGet = 'get'.ucfirst($name);
         $methodHas = 'has'.ucfirst($name);
         $methodIs  = 'is'.ucfirst($name);
@@ -211,6 +215,10 @@ class ObjectConfigBuilder implements ObjectConfigBuilderInterface
      */
     public function setProperties(array $properties)
     {
+        if (null === $this->data) {
+            throw new BadMethodCallException('BlockConfigBuilder methods cannot be accessed when the data is empty.');
+        }
+
         if ($this->locked) {
             throw new BadMethodCallException('BlockConfigBuilder methods cannot be accessed anymore once the builder is turned into a BlockConfigInterface instance.');
         }

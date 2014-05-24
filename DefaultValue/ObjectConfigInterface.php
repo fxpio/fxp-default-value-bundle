@@ -11,6 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
+use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException;
 use Symfony\Component\PropertyAccess\Exception\InvalidArgumentException;
 
 /**
@@ -51,6 +52,7 @@ interface ObjectConfigInterface
      * @return mixed The property value
      *
      * @throws InvalidArgumentException
+     * @throws BadMethodCallException   When the data is empty
      */
     public function getProperty($name);
 
