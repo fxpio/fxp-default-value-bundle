@@ -12,7 +12,7 @@
 namespace Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object;
 
 /**
- * User is the user implementation used by the in-memory user provider.
+ * Foo class test.
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
