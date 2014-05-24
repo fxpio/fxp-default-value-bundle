@@ -96,10 +96,7 @@ class ObjectFactory implements ObjectFactoryInterface
     {
         $parentType = $type->getParent();
 
-        if ($parentType instanceof ObjectTypeInterface) {
-            $parentType = $this->resolveType($parentType);
-
-        } elseif (null !== $parentType) {
+        if (null !== $parentType) {
             $parentType = $this->registry->getType($parentType);
         }
 
