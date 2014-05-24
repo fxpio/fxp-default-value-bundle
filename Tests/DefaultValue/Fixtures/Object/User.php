@@ -28,6 +28,7 @@ final class User implements AdvancedUserInterface
     private $accountNonLocked;
     private $roles;
     private $customField;
+    private $foo;
 
     public function __construct($username, $password, array $roles = array(), $enabled = true, $userNonExpired = true, $credentialsNonExpired = true, $userNonLocked = true)
     {
@@ -42,6 +43,7 @@ final class User implements AdvancedUserInterface
         $this->credentialsNonExpired = $credentialsNonExpired;
         $this->accountNonLocked = $userNonLocked;
         $this->roles = $roles;
+        $this->foo = false;
     }
 
     /**
@@ -128,5 +130,21 @@ final class User implements AdvancedUserInterface
     public function getCustomField()
     {
         return $this->customField;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasBar()
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function foo()
+    {
+        return $this->foo;
     }
 }

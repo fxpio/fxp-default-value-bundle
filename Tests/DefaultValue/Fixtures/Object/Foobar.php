@@ -16,39 +16,26 @@ namespace Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class Foo
+class Foobar extends Foo
 {
     /**
      * @var string
      */
-    private $bar;
-
-    /**
-     * @var bool
-     */
-    private $privateProperty = false;
+    private $customField;
 
     /**
      * @param string $value
      */
-    public function setBar($value)
+    public function setCustomField($value)
     {
-        $this->bar = $value;
+        $this->customField = $value;
     }
 
     /**
      * @return string
      */
-    public function getBar()
+    public function getCustomField()
     {
-        return $this->bar;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getPrivateProperty()
-    {
-        return $this->privateProperty;
+        return $this->customField;
     }
 }
