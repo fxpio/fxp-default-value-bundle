@@ -1,9 +1,9 @@
 {
     "name": "sonatra/default-value-bundle",
     "type": "symfony-bundle",
-    "description": "Sonatra Default Value Bundle",
-    "keywords": ["Default Value", "Object", "Entity", "Document"],
-    "homepage": "http://sonatra.com",
+    "description": "Creates or injects the default values ​​with a advanced configuration in the object",
+    "keywords": ["default value", "object", "entity", "document"],
+    "homepage": "https://github.com/sonatra/SonatraDefaultValueBundle",
     "license": "MIT",
     "authors": [
         {
@@ -11,9 +11,8 @@
             "email": "francois.pluchino@sonatra.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.2",
+        "php": ">=5.3.3",
         "symfony/framework-bundle": "~2.4",
         "symfony/options-resolver": "~2.4",
         "symfony/property-access": "~2.4"
