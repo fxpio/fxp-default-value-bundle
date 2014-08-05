@@ -3,6 +3,7 @@ Sonatra Default Value Bundle
 
 [![Latest Stable Version](https://poser.pugx.org/sonatra/default-value-bundle/v/stable.svg)](https://packagist.org/packages/sonatra/default-value-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/sonatra/default-value-bundle/v/unstable.svg)](https://packagist.org/packages/sonatra/default-value-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231/mini.png)](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231)
 
 The Sonatra DefaultValueBundle creates or injects the default values ​​with a advanced configuration in the object.
 
