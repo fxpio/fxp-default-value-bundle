@@ -23,7 +23,7 @@ class DependencyInjectionExtension implements ObjectExtensionInterface
     /**
      * @var ContainerInterface
      */
-    protected $container;
+    public $container;
 
     /**
      * @var array
@@ -38,13 +38,11 @@ class DependencyInjectionExtension implements ObjectExtensionInterface
     /**
      * Constructor.
      *
-     * @param ContainerInterface $container
-     * @param array              $typeServiceIds
-     * @param array              $typeExtensionServiceIds
+     * @param array $typeServiceIds
+     * @param array $typeExtensionServiceIds
      */
-    public function __construct(ContainerInterface $container, array $typeServiceIds, array $typeExtensionServiceIds)
+    public function __construct(array $typeServiceIds, array $typeExtensionServiceIds)
     {
-        $this->container = $container;
         $this->typeServiceIds = $typeServiceIds;
         $this->typeExtensionServiceIds = $typeExtensionServiceIds;
     }

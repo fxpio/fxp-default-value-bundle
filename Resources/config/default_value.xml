@@ -14,7 +14,7 @@
     <services>
         <!-- DependencyInjectionExtension -->
         <service id="sonatra_default_value.extension" class="%sonatra_default_value.extension.class%" public="false">
-            <argument type="service" id="service_container" />
+            <property name="container" type="service" id="service_container" />
             <argument type="service" id="sonatra_default_value.type" />
             <argument type="service" id="sonatra_default_value.type_extension" />
         </service>

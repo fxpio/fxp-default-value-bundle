@@ -48,7 +48,7 @@ class DefaultValuePass implements CompilerPassInterface
             $types[$alias] = $serviceId;
         }
 
-        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(1, $types);
+        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(0, $types);
 
         $typeExtensions = array();
 
@@ -64,6 +64,6 @@ class DefaultValuePass implements CompilerPassInterface
             $typeExtensions[$alias][] = $serviceId;
         }
 
-        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(2, $typeExtensions);
+        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(1, $typeExtensions);
     }
 }
