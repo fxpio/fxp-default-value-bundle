@@ -14,6 +14,7 @@ namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * A wrapper for a object default value type and its extensions.
@@ -38,7 +39,7 @@ class ResolvedObjectType implements ResolvedObjectTypeInterface
     protected $parent;
 
     /**
-     * @var OptionsResolver
+     * @var OptionsResolverInterface
      */
     protected $optionsResolver;
 

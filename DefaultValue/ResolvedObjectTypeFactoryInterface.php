@@ -25,9 +25,9 @@ interface ResolvedObjectTypeFactoryInterface
     /**
      * Resolves a object default value type.
      *
-     * @param ObjectTypeInterface         $type
-     * @param array                       $typeExtensions
-     * @param ResolvedObjectTypeInterface $parent
+     * @param ObjectTypeInterface              $type
+     * @param array                            $typeExtensions
+     * @param ResolvedObjectTypeInterface|null $parent
      *
      * @return ResolvedObjectTypeInterface
      *
