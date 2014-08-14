@@ -78,11 +78,7 @@ abstract class AbstractExtension implements ObjectExtensionInterface
      */
     public function hasTypeExtensions($name)
     {
-        if (null === $this->typeExtensions) {
-            $this->initTypeExtensions();
-        }
-
-        return isset($this->typeExtensions[$name]) && count($this->typeExtensions[$name]) > 0;
+        return count($this->getTypeExtensions($name)) > 0;
     }
 
     /**
