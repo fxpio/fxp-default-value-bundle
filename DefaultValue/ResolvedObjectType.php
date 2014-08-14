@@ -137,16 +137,7 @@ class ResolvedObjectType implements ResolvedObjectTypeInterface
      */
     public function buildObject(ObjectBuilderInterface $builder, array $options)
     {
-        if (null !== $this->parent) {
-            $this->parent->buildObject($builder, $options);
-        }
-
-        $this->innerType->buildObject($builder, $options);
-
-        foreach ($this->typeExtensions as $extension) {
-            /* @var ObjectTypeExtensionInterface $extension */
-            $extension->buildObject($builder, $options);
-        }
+        $this->doActionObject('buildObject', $builder, $options);
     }
 
     /**
@@ -154,16 +145,7 @@ class ResolvedObjectType implements ResolvedObjectTypeInterface
      */
     public function finishObject(ObjectBuilderInterface $builder, array $options)
     {
-        if (null !== $this->parent) {
-            $this->parent->finishObject($builder, $options);
-        }
-
-        $this->innerType->finishObject($builder, $options);
-
-        foreach ($this->typeExtensions as $extension) {
-            /* @var ObjectTypeExtensionInterface $extension */
-            $extension->finishObject($builder, $options);
-        }
+        $this->doActionObject('finishObject', $builder, $options);
     }
 
     /**
@@ -187,5 +169,26 @@ class ResolvedObjectType implements ResolvedObjectTypeInterface
         }
 
         return $this->optionsResolver;
+    }
+
+    /**
+     * Build or finish the object.
+     *
+     * @param string                 $method  The buildObject or finishObject method name
+     * @param ObjectBuilderInterface $builder
+     * @param array                  $options
+     */
+    protected function doActionObject($method, ObjectBuilderInterface $builder, array $options)
+    {
+        if (null !== $this->parent) {
+            $this->parent->$method($builder, $options);
+        }
+
+        $this->innerType->$method($builder, $options);
+
+        foreach ($this->typeExtensions as $extension) {
+            /* @var ObjectTypeExtensionInterface $extension */
+            $extension->$method($builder, $options);
+        }
     }
 }
