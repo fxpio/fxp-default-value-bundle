@@ -33,37 +33,41 @@ class DefaultValuePass implements CompilerPassInterface
         }
 
         // Builds an array with service IDs as keys and tag aliases as values
-        $types = array();
+        $this->findTags($container, 'sonatra_default_value.type', 0);
+        $this->findTags($container, 'sonatra_default_value.type_extension', 1, true);
+    }
 
-        foreach ($container->findTaggedServiceIds('sonatra_default_value.type') as $serviceId => $tag) {
+    /**
+     * Find service tags.
+     *
+     * @param ContainerBuilder $container
+     * @param string           $tagName
+     * @param int              $argumentPosition
+     * @param bool             $ext
+     *
+     * @throws InvalidConfigurationException
+     */
+    protected function findTags(ContainerBuilder $container, $tagName, $argumentPosition, $ext = false)
+    {
+        $services = array();
+
+        foreach ($container->findTaggedServiceIds($tagName) as $serviceId => $tag) {
             $alias = isset($tag[0]['alias'])
                 ? $tag[0]['alias']
                 : null;
 
             if (null === $alias) {
-                throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "alias" parameter in the "sonatra_default_value.type" tag.', $serviceId));
+                throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "alias" parameter in the "%s" tag.', $serviceId, $tagName));
             }
 
             // Flip, because we want tag aliases (= type identifiers) as keys
-            $types[$alias] = $serviceId;
-        }
-
-        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(0, $types);
-
-        $typeExtensions = array();
-
-        foreach ($container->findTaggedServiceIds('sonatra_default_value.type_extension') as $serviceId => $tag) {
-            $alias = isset($tag[0]['alias'])
-                ? $tag[0]['alias']
-                : null;
-
-            if (null === $alias) {
-                throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "alias" parameter in the "sonatra_default_value.type_extension" tag.', $serviceId));
+            if ($ext) {
+                $services[$alias][] = $serviceId;
+            } else {
+                $services[$alias] = $serviceId;
             }
-
-            $typeExtensions[$alias][] = $serviceId;
         }
 
-        $container->getDefinition('sonatra_default_value.extension')->replaceArgument(1, $typeExtensions);
+        $container->getDefinition('sonatra_default_value.extension')->replaceArgument($argumentPosition, $services);
     }
 }
