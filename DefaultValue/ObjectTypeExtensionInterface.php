@@ -26,6 +26,8 @@ interface ObjectTypeExtensionInterface
      *
      * @param ObjectBuilderInterface $builder The object builder
      * @param array                  $options The options
+     *
+     * @return void
      */
     public function buildObject(ObjectBuilderInterface $builder, array $options);
 
@@ -37,14 +39,18 @@ interface ObjectTypeExtensionInterface
      *
      * @param ObjectBuilderInterface $builder The object builder
      * @param array                  $options The options
-    */
+     *
+     * @return void
+     */
     public function finishObject(ObjectBuilderInterface $builder, array $options);
 
     /**
      * Sets the default options for this type.
      *
      * @param OptionsResolverInterface $resolver The resolver for the options.
-    */
+     *
+     * @return void
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver);
 
     /**
