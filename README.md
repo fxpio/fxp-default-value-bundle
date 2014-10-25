@@ -4,7 +4,7 @@ Sonatra Default Value Bundle
 [![Latest Stable Version](https://poser.pugx.org/sonatra/default-value-bundle/v/stable.svg)](https://packagist.org/packages/sonatra/default-value-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/sonatra/default-value-bundle/v/unstable.svg)](https://packagist.org/packages/sonatra/default-value-bundle)
 [![Build Status](https://travis-ci.org/sonatra/SonatraDefaultValueBundle.svg)](https://travis-ci.org/sonatra/SonatraDefaultValueBundle)
-[![Coverage Status](https://coveralls.io/repos/sonatra/SonatraDefaultValueBundle/badge.png)](https://coveralls.io/r/sonatra/SonatraDefaultValueBundle)
+[![Coverage Status](https://img.shields.io/coveralls/sonatra/SonatraDefaultValueBundle.svg)](https://coveralls.io/r/sonatra/SonatraDefaultValueBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sonatra/SonatraDefaultValueBundle/badges/quality-score.png)](https://scrutinizer-ci.com/g/sonatra/SonatraDefaultValueBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231/mini.png)](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231)
 
