@@ -2,10 +2,10 @@ Sonatra Default Value Bundle
 ============================
 
 [![Latest Version](https://img.shields.io/packagist/v/sonatra/default-value-bundle.svg)](https://packagist.org/packages/sonatra/default-value-bundle)
-[![Build Status](https://travis-ci.org/sonatra/SonatraDefaultValueBundle.svg)](https://travis-ci.org/sonatra/SonatraDefaultValueBundle)
-[![Coverage Status](https://img.shields.io/coveralls/sonatra/SonatraDefaultValueBundle.svg)](https://coveralls.io/r/sonatra/SonatraDefaultValueBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sonatra/SonatraDefaultValueBundle/badges/quality-score.png)](https://scrutinizer-ci.com/g/sonatra/SonatraDefaultValueBundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231/mini.png)](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231)
+[![Build Status](https://img.shields.io/travis/sonatra/SonatraDefaultValueBundle/master.svg)](https://travis-ci.org/sonatra/SonatraDefaultValueBundle)
+[![Coverage Status](https://img.shields.io/coveralls/sonatra/SonatraDefaultValueBundle/master.svg)](https://coveralls.io/r/sonatra/SonatraDefaultValueBundle?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/sonatra/SonatraDefaultValueBundle/master.svg)](https://scrutinizer-ci.com/g/sonatra/SonatraDefaultValueBundle?branch=master)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/b5cced51-b0ef-4216-9733-21e1c93f4231.svg)](https://insight.sensiolabs.com/projects/b5cced51-b0ef-4216-9733-21e1c93f4231)
 
 The Sonatra DefaultValueBundle creates or injects the default values ​​with a advanced configuration in the object.
 
