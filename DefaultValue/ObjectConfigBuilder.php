@@ -230,7 +230,6 @@ class ObjectConfigBuilder implements ObjectConfigBuilderInterface
 
             if (in_array($methodSet, $this->methods)) {
                 $this->getData()->$methodSet($value);
-
             } else {
                 $refProp = $this->findReflectionProperty($property, $refClass);
                 $refProp->setValue($this->getData(), $value);

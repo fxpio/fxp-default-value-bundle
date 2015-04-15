@@ -102,7 +102,6 @@ class ObjectRegistry implements ObjectRegistryInterface
 
         try {
             $this->getType($name);
-
         } catch (ExceptionInterface $e) {
             return false;
         }

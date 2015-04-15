@@ -67,10 +67,8 @@ class ObjectFactory implements ObjectFactoryInterface
     {
         if ($type instanceof ObjectTypeInterface) {
             $type = $this->resolveType($type);
-
         } elseif (is_string($type)) {
             $type = $this->registry->getType($type);
-
         } elseif (!$type instanceof ResolvedObjectTypeInterface) {
             throw new UnexpectedTypeException($type, 'string, Sonatra\Bundle\DefaultValueBundle\DefaultValue\ResolvedObjectTypeInterface or Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface');
         }
