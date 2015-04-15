@@ -11,6 +11,8 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler;
 
+use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface;
+use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -32,7 +34,7 @@ class DefaultValuePass implements CompilerPassInterface
             return;
         }
 
-        // Builds an array with service IDs as keys and tag aliases as values
+        // Builds an array with service IDs as keys and tag class names as values
         $this->findTags($container, 'sonatra_default_value.type', 0);
         $this->findTags($container, 'sonatra_default_value.type_extension', 1, true);
     }
@@ -52,22 +54,42 @@ class DefaultValuePass implements CompilerPassInterface
         $services = array();
 
         foreach ($container->findTaggedServiceIds($tagName) as $serviceId => $tag) {
-            $alias = isset($tag[0]['alias'])
-                ? $tag[0]['alias']
-                : null;
+            $class = isset($tag[0]['class'])
+                ? $tag[0]['class']
+                : $this->getClassName($container, $serviceId, $tagName);
 
-            if (null === $alias) {
-                throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "alias" parameter in the "%s" tag.', $serviceId, $tagName));
-            }
-
-            // Flip, because we want tag aliases (= type identifiers) as keys
+            // Flip, because we want tag classe names (= type identifiers) as keys
             if ($ext) {
-                $services[$alias][] = $serviceId;
+                $services[$class][] = $serviceId;
             } else {
-                $services[$alias] = $serviceId;
+                $services[$class] = $serviceId;
             }
         }
 
         $container->getDefinition('sonatra_default_value.extension')->replaceArgument($argumentPosition, $services);
+    }
+
+    /**
+     * Get the class name of default value type.
+     *
+     * @param ContainerBuilder $container The container service
+     * @param string           $serviceId The service id of default value type
+     * @param string           $tagName   The tag name
+     *
+     * @return string
+     *
+     * @throws InvalidConfigurationException When the service is not an instance of Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface
+     */
+    protected function getClassName(ContainerBuilder $container, $serviceId, $tagName)
+    {
+        $type = $container->get($serviceId);
+
+        if ($type instanceof ObjectTypeExtensionInterface) {
+            throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
+        } elseif (!$type instanceof ObjectTypeInterface) {
+            throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface'));
+        }
+
+        return $type->getClass();
     }
 }

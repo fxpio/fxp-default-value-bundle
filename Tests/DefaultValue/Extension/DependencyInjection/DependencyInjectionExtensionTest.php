@@ -49,7 +49,6 @@ class DependencyInjectionExtensionTest extends AbstractBaseExtensionTest
         $load = new XmlFileLoader($container, new FileLocator(__DIR__.'/../../Fixtures/config'));
         $load->load($service.'.xml');
 
-        $container->getCompilerPassConfig()->setOptimizationPasses(array());
         $container->getCompilerPassConfig()->setRemovingPasses(array());
         $container->compile();
 

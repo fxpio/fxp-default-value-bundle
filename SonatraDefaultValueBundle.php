@@ -11,6 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle;
 
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler\DefaultValuePass;
@@ -24,6 +25,6 @@ class SonatraDefaultValueBundle extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new DefaultValuePass());
+        $container->addCompilerPass(new DefaultValuePass(), PassConfig::TYPE_OPTIMIZE);
     }
 }

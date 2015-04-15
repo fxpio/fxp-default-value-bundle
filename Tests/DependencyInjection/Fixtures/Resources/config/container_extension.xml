@@ -7,7 +7,7 @@
     <services>
         <!-- CoreExtension -->
         <service id="test.sonatra_default_value.type.default" class="Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension\DefaultExtension">
-            <tag name="sonatra_default_value.type_extension" alias="default" />
+            <tag name="sonatra_default_value.type_extension" class="default" />
         </service>
     </services>
 </container>

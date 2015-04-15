@@ -88,7 +88,6 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
             $load->load($services.'.xml');
         }
 
-        $container->getCompilerPassConfig()->setOptimizationPasses(array());
         $container->getCompilerPassConfig()->setRemovingPasses(array());
         $container->compile();
 
