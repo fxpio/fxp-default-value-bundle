@@ -96,7 +96,7 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testGetOptions()
     {
-        $opts= $this->config->getOptions();
+        $opts = $this->config->getOptions();
 
         $this->assertTrue(is_array($opts));
     }
