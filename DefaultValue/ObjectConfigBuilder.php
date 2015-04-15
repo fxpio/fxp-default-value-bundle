@@ -22,7 +22,7 @@ use Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentExce
 class ObjectConfigBuilder implements ObjectConfigBuilderInterface
 {
     /**
-     * @var boolean
+     * @var bool
      */
     protected $locked = false;
 
