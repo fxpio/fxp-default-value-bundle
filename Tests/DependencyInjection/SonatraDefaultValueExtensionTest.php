@@ -40,11 +40,11 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($container->hasDefinition('sonatra_default_value.resolved_type_factory'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testLoadExtensionWithoutAlias()
     {
+        $msg = 'The service id "test.sonatra_default_value.type.invalid" must an instance of "Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface"';
+        $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', $msg);
+
         $this->getContainer(false, 'container_exception');
     }
 
@@ -54,11 +54,11 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.default'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
     public function testLoadDefaultExtensionWithoutAlias()
     {
+        $msg = 'The service id "test.sonatra_default_value.type.default" must have the "class" parameter in the "sonatra_default_value.type_extension';
+        $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', $msg);
+
         $this->getContainer(false, 'container_extension_exception');
     }
 
