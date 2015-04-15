@@ -104,13 +104,13 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
     public function testHasAndGetOption()
     {
         $this->assertTrue($this->config->hasOption('username'));
-        $this->assertEquals('foo',$this->config->getOption('username', 'default value'));
+        $this->assertEquals('foo', $this->config->getOption('username', 'default value'));
 
         $this->assertTrue($this->config->hasOption('password'));
-        $this->assertEquals('bar',$this->config->getOption('password', 'default value'));
+        $this->assertEquals('bar', $this->config->getOption('password', 'default value'));
 
         $this->assertFalse($this->config->hasOption('invalidProperty'));
-        $this->assertEquals('default value',$this->config->getOption('invalidProperty', 'default value'));
+        $this->assertEquals('default value', $this->config->getOption('invalidProperty', 'default value'));
     }
 
     public function testSetInvalidData()
@@ -146,7 +146,7 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $properties = $this->config->getProperties();
 
         $this->assertTrue(is_array($properties));
-        $this->assertCount(9,$properties);
+        $this->assertCount(9, $properties);
     }
 
     public function testGetProperty()
