@@ -71,8 +71,6 @@ interface ResolvedObjectTypeInterface
      *
      * @param ObjectBuilderInterface $builder The builder to configure
      * @param array                  $options The options used for the configuration
-     *
-     * @return void
      */
     public function buildObject(ObjectBuilderInterface $builder, array $options);
 
@@ -81,8 +79,6 @@ interface ResolvedObjectTypeInterface
      *
      * @param ObjectBuilderInterface $builder The builder to configure
      * @param array                  $options The options used for the configuration
-     *
-     * @return void
      */
     public function finishObject(ObjectBuilderInterface $builder, array $options);
 
