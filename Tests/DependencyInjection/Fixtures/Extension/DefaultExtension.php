@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\Tests\Fixtures\Extension;
+namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension;
 
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractTypeExtension;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Block Block Extension.
+ * Default Value Extension.
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class BlockExtension extends AbstractTypeExtension
+class DefaultExtension extends AbstractTypeExtension
 {
     /**
      * {@inheritdoc}
