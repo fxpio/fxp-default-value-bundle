@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\BootstrapBundle\Block\Extension;
+namespace Sonatra\Bundle\DefaultValueBundle\Tests\Fixtures\Extension;
 
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractTypeExtension;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
