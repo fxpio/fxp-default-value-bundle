@@ -21,12 +21,14 @@ abstract class AbstractExtension implements ObjectExtensionInterface
 {
     /**
      * The types provided by this extension.
+     *
      * @var array An array of ObjectTypeInterface
      */
     protected $types;
 
     /**
      * The type extensions provided by this extension.
+     *
      * @var array An array of ObjectTypeExtensionInterface
      */
     protected $typeExtensions;

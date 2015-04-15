@@ -24,6 +24,7 @@ class ObjectRegistry implements ObjectRegistryInterface
 {
     /**
      * Extensions.
+     *
      * @var array An array of ObjectExtensionInterface
      */
     protected $extensions = array();
