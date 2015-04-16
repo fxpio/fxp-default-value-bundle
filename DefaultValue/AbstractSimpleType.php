@@ -9,29 +9,33 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue\Extension\Core\Type;
-
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractSimpleType;
+namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class DefaultType extends AbstractSimpleType
+abstract class AbstractSimpleType extends AbstractType
 {
+    /**
+     * @var string
+     */
+    protected $class;
+
     /**
      * Constructor.
      *
      * @param string $class The class name
      */
-    public function __construct($class = 'default')
+    public function __construct($class)
     {
-        parent::__construct($class);
+        $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getClass()
     {
+        return $this->class;
     }
 }
