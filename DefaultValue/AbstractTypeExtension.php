@@ -11,7 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -35,7 +35,7 @@ abstract class AbstractTypeExtension implements ObjectTypeExtensionInterface
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
     }
 }

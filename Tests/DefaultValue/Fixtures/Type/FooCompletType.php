@@ -14,7 +14,7 @@ namespace Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Type;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractType;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
 use Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object\Foo;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FooCompletType extends AbstractType
 {
@@ -47,15 +47,13 @@ class FooCompletType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'bar' => null,
         ));
 
-        $resolver->addAllowedTypes(array(
-            'bar' => 'string',
-        ));
+        $resolver->addAllowedTypes('bar', 'string');
     }
 
     /**

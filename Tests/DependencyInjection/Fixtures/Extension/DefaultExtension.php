@@ -13,7 +13,7 @@ namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\E
 
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractTypeExtension;
 use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Default Value Extension.
@@ -39,15 +39,13 @@ class DefaultExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'test' => null,
         ));
 
-        $resolver->addAllowedTypes(array(
-            'test' => array('null', 'string'),
-        ));
+        $resolver->addAllowedTypes('test', array('null', 'string'));
     }
 
     /**

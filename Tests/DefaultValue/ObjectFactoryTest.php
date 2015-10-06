@@ -52,7 +52,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstance()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
         $builder = $this->factory->createBuilder($type, null, array('bar' => 'hello world'));
 
         $this->assertInstanceOf('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectConfigBuilderInterface', $builder);
@@ -66,7 +66,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstanceWithSpecialValueOfBarField()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
         $builder = $this->factory->createBuilder($type, null, array('bar' => 'the answer to life, the universe, and everything'));
         $instance = $builder->getObject();
 
@@ -77,7 +77,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstanceAndData()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
         $data = new Foo();
         $builder = $this->factory->createBuilder($type, $data, array('bar' => 'hello world'));
         $instance = $builder->getObject();
@@ -89,7 +89,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstanceAndDataWithValueInField()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
         $data = new Foo();
         $data->setBar('has value');
         $builder = $this->factory->createBuilder($type, $data, array('bar' => 'hello world'));
@@ -102,7 +102,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstanceAndDataWithValueInFieldWithSpecialValueOfBarField()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
         $data = new Foo();
         $data->setBar('the answer to life, the universe, and everything');
         $builder = $this->factory->createBuilder($type, $data, array('bar' => 'hello world'));
@@ -115,7 +115,7 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreateBuilderWithObjectTypeInstanceWithoutOptions()
     {
         $type = new FooCompletType();
-        $type->setDefaultOptions(new OptionsResolver());
+        $type->configureOptions(new OptionsResolver());
 
         $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         $this->factory->createBuilder($type);

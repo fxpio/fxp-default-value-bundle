@@ -11,7 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DefaultValue;
 
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
@@ -51,11 +51,11 @@ interface ObjectTypeInterface
     public function finishObject(ObjectBuilderInterface $builder, array $options);
 
     /**
-     * Sets the default options for this type.
+     * Configures the options for this type.
      *
-     * @param OptionsResolverInterface $resolver The resolver for the options.
+     * @param OptionsResolver $resolver The resolver for the options
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver);
+    public function configureOptions(OptionsResolver $resolver);
 
     /**
      * Returns the name of the parent type.
