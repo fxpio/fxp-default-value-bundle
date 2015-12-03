@@ -13,9 +13,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/framework-bundle": "~2.7",
-        "symfony/options-resolver": "~2.7",
-        "symfony/property-access": "~2.7"
+        "symfony/framework-bundle": "~2.8",
+        "symfony/options-resolver": "~2.8",
+        "symfony/property-access": "~2.8"
     },
     "autoload": {
         "psr-4": { "Sonatra\\Bundle\\DefaultValueBundle\\": "" }
