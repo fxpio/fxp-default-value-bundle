@@ -194,8 +194,8 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->config->getProperty('privateProperty'));
 
         $config = $this->config->setProperties(array(
-                'bar'             => 'value edited',
-                'customField'     => '21',
+                'bar' => 'value edited',
+                'customField' => '21',
                 'privateProperty' => true,
         ));
 
