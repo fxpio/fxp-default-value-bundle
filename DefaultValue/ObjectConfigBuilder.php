@@ -101,7 +101,7 @@ class ObjectConfigBuilder implements ObjectConfigBuilderInterface
 
         $methodGet = 'get'.ucfirst($name);
         $methodHas = 'has'.ucfirst($name);
-        $methodIs  = 'is'.ucfirst($name);
+        $methodIs = 'is'.ucfirst($name);
 
         if (in_array($methodGet, $this->methods)) {
             return $this->getData()->$methodGet();
