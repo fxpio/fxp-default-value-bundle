@@ -40,7 +40,7 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($container->hasDefinition('sonatra_default_value.resolved_type_factory'));
     }
 
-    public function testLoadExtensionWithoutAlias()
+    public function testLoadExtensionWithoutClassname()
     {
         $msg = 'The service id "test.sonatra_default_value.type.invalid" must an instance of "Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface"';
         $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', $msg);
@@ -48,18 +48,38 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
         $this->getContainer(false, 'container_exception');
     }
 
-    public function testLoadDefaultExtensionWithAlias()
+    public function testLoadDefaultExtensionWithClassname()
     {
         $container = $this->getContainer(false, 'container_extension');
         $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.default'));
     }
 
-    public function testLoadDefaultExtensionWithoutAlias()
+    public function testLoadDefaultExtensionWithoutClassname()
     {
         $msg = 'The service id "test.sonatra_default_value.type.default" must have the "class" parameter in the "sonatra_default_value.type_extension';
         $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', $msg);
 
         $this->getContainer(false, 'container_extension_exception');
+    }
+
+    public function testLoadDefaultTypeWithSimpleType()
+    {
+        $container = $this->getContainer(false, 'container_custom_simple');
+        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.simple'));
+    }
+
+    public function testLoadDefaultTypeWithCustomConstructor()
+    {
+        $container = $this->getContainer(false, 'container_custom');
+        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.custom'));
+    }
+
+    public function testLoadDefaultTypeWithCustomConstructorWithoutClassname()
+    {
+        $msg = 'The service id "test.sonatra_default_value.type.custom" must have the "class" parameter in the "sonatra_default_value.type" tag.';
+        $this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidConfigurationException', $msg);
+
+        $this->getContainer(false, 'container_custom_exception');
     }
 
     /**

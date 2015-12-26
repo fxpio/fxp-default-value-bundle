@@ -43,7 +43,7 @@
 
         <!-- CoreExtension -->
         <service id="sonatra_default_value.type.default" class="Sonatra\Bundle\DefaultValueBundle\DefaultValue\Extension\Core\Type\DefaultType">
-            <tag name="sonatra_default_value.type" alias="default" />
+            <tag name="sonatra_default_value.type" class="default" />
         </service>
     </services>
 </container>
