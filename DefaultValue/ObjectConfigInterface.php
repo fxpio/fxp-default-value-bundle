@@ -40,7 +40,7 @@ interface ObjectConfigInterface
      *
      * @param string $name The property name
      *
-     * @return Boolean Whether the property exists
+     * @return bool Whether the property exists
      */
     public function hasProperty($name);
 
@@ -82,7 +82,7 @@ interface ObjectConfigInterface
      *
      * @param string $name The option name
      *
-     * @return Boolean Whether the option exists
+     * @return bool Whether the option exists
      */
     public function hasOption($name);
 
