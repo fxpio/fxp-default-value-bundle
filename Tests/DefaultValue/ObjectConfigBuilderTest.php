@@ -53,11 +53,13 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->config, $config);
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testGetObjectConfigWithConfigLocked()
     {
         $this->config->getObjectConfig();
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->getObjectConfig();
     }
 
@@ -85,11 +87,13 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Type\FooType', $type2->getInnerType());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testSetTypeWithConfigLocked()
     {
         $rType = new ResolvedObjectType(new FooType());
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->getObjectConfig();
         $this->config->setType($rType);
     }
@@ -113,9 +117,11 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('default value', $this->config->getOption('invalidProperty', 'default value'));
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException
+     */
     public function testSetInvalidData()
     {
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException');
         $this->config->setData(42);
     }
 
@@ -129,13 +135,15 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(get_class($data), $this->config->getDataClass());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testSetValidDataWithConfigLocked()
     {
         $data = new User('root', 'p@ssword');
         $this->config->setData($data);
         $this->config->getObjectConfig();
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->setData($data);
     }
 
@@ -164,21 +172,25 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->config->getProperty('foo'));
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testGetPropertyWithEmptyData()
     {
         $this->assertNull($this->config->getData());
         $this->assertNull($this->config->getDataClass());
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->getProperty('property');
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException
+     */
     public function testGetInvalidProperty()
     {
         $data = new User('root', 'p@ssword');
         $this->config->setData($data);
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException');
         $this->config->getProperty('invalidField');
     }
 
@@ -205,35 +217,41 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $this->config->getProperty('privateProperty'));
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testSetPropertiesWithConfigLocked()
     {
         $data = new Foobar();
         $this->config->setData($data);
         $this->config->getObjectConfig();
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->setProperties(array(
             'bar' => 'value edited',
         ));
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testSetPropertiesWithEmptyData()
     {
         $this->assertNull($this->config->getData());
         $this->assertNull($this->config->getDataClass());
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->setProperties(array(
             'property' => 'value',
         ));
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException
+     */
     public function testSetPropertiesWithInvalidClassProperty()
     {
         $data = new Foobar();
         $this->config->setData($data);
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException');
         $this->config->setProperties(array(
             'invalidProperty' => 'value',
         ));
@@ -253,12 +271,14 @@ class ObjectConfigBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('value edited', $data->getBar());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException
+     */
     public function testSetPropertyWithEmptyData()
     {
         $this->assertNull($this->config->getData());
         $this->assertNull($this->config->getDataClass());
 
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\BadMethodCallException');
         $this->config->setProperty('property', 'value');
     }
 }

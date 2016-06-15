@@ -41,7 +41,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testSetResolvedObjectTypeFactory()
     {
         /* @var ResolvedObjectTypeFactoryInterface $typeFactory */
-        $typeFactory = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ResolvedObjectTypeFactoryInterface');
+        $typeFactory = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ResolvedObjectTypeFactoryInterface')->getMock();
 
         $builder = $this->builder->setResolvedTypeFactory($typeFactory);
 
@@ -51,7 +51,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddExtension()
     {
         /* @var ObjectExtensionInterface $ext */
-        $ext = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectExtensionInterface');
+        $ext = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectExtensionInterface')->getMock();
 
         $builder = $this->builder->addExtension($ext);
 
@@ -61,7 +61,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddExtensions()
     {
         $exts = array(
-            $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectExtensionInterface'),
+            $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectExtensionInterface')->getMock(),
         );
 
         $builder = $this->builder->addExtensions($exts);
@@ -72,7 +72,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddType()
     {
         /* @var ObjectTypeInterface $type */
-        $type = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface');
+        $type = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface')->getMock();
 
         $builder = $this->builder->addType($type);
 
@@ -82,7 +82,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddTypes()
     {
         $types = array(
-            $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface'),
+            $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface')->getMock(),
         );
 
         $builder = $this->builder->addTypes($types);
@@ -93,7 +93,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddTypeExtension()
     {
         /* @var ObjectTypeExtensionInterface $ext */
-        $ext = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface');
+        $ext = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface')->getMock();
 
         $builder = $this->builder->addTypeExtension($ext);
 
@@ -103,7 +103,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testAddTypeExtensions()
     {
         $exts = array(
-            $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface'),
+            $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface')->getMock(),
         );
 
         $builder = $this->builder->addTypeExtensions($exts);
@@ -114,7 +114,7 @@ class ObjectFactoryBuilderTest extends \PHPUnit_Framework_TestCase
     public function testGetObjectFactory()
     {
         /* @var ObjectTypeInterface $type */
-        $type = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface');
+        $type = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface')->getMock();
         $this->builder->addType($type);
 
         $of = $this->builder->getObjectFactory();

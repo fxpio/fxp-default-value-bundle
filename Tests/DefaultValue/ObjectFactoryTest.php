@@ -112,12 +112,14 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('42', $instance->getBar());
     }
 
+    /**
+     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
+     */
     public function testCreateBuilderWithObjectTypeInstanceWithoutOptions()
     {
         $type = new FooCompletType();
         $type->configureOptions(new OptionsResolver());
 
-        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         $this->factory->createBuilder($type);
     }
 
@@ -133,9 +135,11 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('hello world', $instance->getBar());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException
+     */
     public function testCreateBuilderWithTypeIsNotAResolvedObjectTypeInstance()
     {
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException');
         $this->factory->createBuilder(42);
     }
 
@@ -166,9 +170,11 @@ class ObjectFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('hello world', $instance->getBar());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException
+     */
     public function testInjectDefaultValueInNonObject()
     {
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\UnexpectedTypeException');
         $this->factory->inject(42);
     }
 }

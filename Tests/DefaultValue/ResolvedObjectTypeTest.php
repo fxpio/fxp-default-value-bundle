@@ -29,7 +29,7 @@ class ResolvedObjectTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function testClassUnexist()
     {
-        $type = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface');
+        $type = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface')->getMock();
         $type->expects($this->any())
             ->method('getClass')
             ->will($this->returnValue('Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object\UnexistClass'));
@@ -70,7 +70,7 @@ class ResolvedObjectTypeTest extends \PHPUnit_Framework_TestCase
     {
         $rType = $this->getResolvedType();
         /* @var ObjectFactoryInterface $factory */
-        $factory = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface');
+        $factory = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface')->getMock();
         $builder = $rType->createBuilder($factory, array());
 
         $this->assertInstanceOf('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface', $builder);
@@ -93,7 +93,7 @@ class ResolvedObjectTypeTest extends \PHPUnit_Framework_TestCase
         $rType = new ResolvedObjectType($type, array(), new ResolvedObjectType($parentType));
 
         /* @var ObjectFactoryInterface $factory */
-        $factory = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface');
+        $factory = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface')->getMock();
         $builder = $rType->createBuilder($factory, array());
 
         $this->assertInstanceOf('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface', $builder);

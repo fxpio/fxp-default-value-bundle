@@ -54,9 +54,11 @@ abstract class AbstractBaseExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Sonatra\Bundle\DefaultValueBundle\Tests\DefaultValue\Fixtures\Object\User', $type->getClass());
     }
 
+    /**
+     * @expectedException \Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException
+     */
     public function testGetUnexistingType()
     {
-        $this->setExpectedException('Sonatra\Bundle\DefaultValueBundle\DefaultValue\Exception\InvalidArgumentException');
         $this->extension->getType('Foo');
     }
 

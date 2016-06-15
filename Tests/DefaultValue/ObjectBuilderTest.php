@@ -34,7 +34,7 @@ class ObjectBuilderTest extends \PHPUnit_Framework_TestCase
             'bar' => 'hello world',
         );
         /* @var ObjectFactoryInterface $factory */
-        $factory = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface');
+        $factory = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface')->getMock();
         $type = new FooCompletType();
         $rType = new ResolvedObjectType($type);
 
@@ -66,7 +66,7 @@ class ObjectBuilderTest extends \PHPUnit_Framework_TestCase
             'bar' => 'the answer to life, the universe, and everything',
         );
         /* @var ObjectFactoryInterface $factory */
-        $factory = $this->getMock('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface');
+        $factory = $this->getMockBuilder('Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectFactoryInterface')->getMock();
         $type = new FooCompletType();
         $rType = new ResolvedObjectType($type);
 
