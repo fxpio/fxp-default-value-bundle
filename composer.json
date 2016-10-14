@@ -18,7 +18,10 @@
         "symfony/property-access": "~3.0"
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Bundle\\DefaultValueBundle\\": "" }
+        "psr-4": { "Sonatra\\Bundle\\DefaultValueBundle\\": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     },
     "extra": {
         "branch-alias": {
