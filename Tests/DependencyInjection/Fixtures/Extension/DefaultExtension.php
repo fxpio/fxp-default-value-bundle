@@ -11,8 +11,8 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension;
 
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractTypeExtension;
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectBuilderInterface;
+use Sonatra\Component\DefaultValue\AbstractTypeExtension;
+use Sonatra\Component\DefaultValue\ObjectBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

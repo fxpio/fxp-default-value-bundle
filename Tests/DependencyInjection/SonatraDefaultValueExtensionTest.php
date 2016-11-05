@@ -42,7 +42,7 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.sonatra_default_value.type.invalid" must an instance of "Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface"
+     * @expectedExceptionMessage The service id "test.sonatra_default_value.type.invalid" must an instance of "Sonatra\Component\DefaultValue\ObjectTypeInterface"
      */
     public function testLoadExtensionWithoutClassname()
     {

@@ -14,11 +14,9 @@ in the model.
 
 Features include:
 
-- Object Default Value Registry
-- Object Default Value Factory
-- Object Default Value Type Builder
-- Object Default Value Type Configuration
-- Object Default Value Type Extension
+- All features of [Sonatra Default Value](https://github.com/sonatra/sonatra-default-value)
+- Compiler pass to register the object type
+- Compiler pass to register the object type extension
 
 Documentation
 -------------

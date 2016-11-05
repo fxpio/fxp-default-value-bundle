@@ -11,7 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Type;
 
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractSimpleType;
+use Sonatra\Component\DefaultValue\AbstractSimpleType;
 
 /**
  * Invalid default value type.

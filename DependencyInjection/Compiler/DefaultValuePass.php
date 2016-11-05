@@ -11,9 +11,9 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler;
 
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\AbstractSimpleType;
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeExtensionInterface;
-use Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface;
+use Sonatra\Component\DefaultValue\AbstractSimpleType;
+use Sonatra\Component\DefaultValue\ObjectTypeExtensionInterface;
+use Sonatra\Component\DefaultValue\ObjectTypeInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -95,7 +95,7 @@ class DefaultValuePass implements CompilerPassInterface
      *
      * @return string
      *
-     * @throws InvalidConfigurationException When the service is not an instance of Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface
+     * @throws InvalidConfigurationException When the service is not an instance of Sonatra\Component\DefaultValue\ObjectTypeInterface
      */
     protected function getClassName(ContainerBuilder $container, $serviceId, $tagName)
     {
@@ -105,7 +105,7 @@ class DefaultValuePass implements CompilerPassInterface
         if (in_array(ObjectTypeExtensionInterface::class, $interfaces)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
         } elseif (!in_array(ObjectTypeInterface::class, $interfaces)) {
-            throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Sonatra\Bundle\DefaultValueBundle\DefaultValue\ObjectTypeInterface'));
+            throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Sonatra\Component\DefaultValue\ObjectTypeInterface'));
         }
 
         return $this->buildInstanceType($type, $serviceId, $tagName)->getClass();

@@ -6,7 +6,7 @@
 
     <services>
         <!-- CoreExtension -->
-        <service id="test.sonatra_default_value.type.simple" class="Sonatra\Bundle\DefaultValueBundle\DefaultValue\Extension\Core\Type\DefaultType">
+        <service id="test.sonatra_default_value.type.simple" class="Sonatra\Component\DefaultValue\Extension\Core\Type\DefaultType">
             <tag name="sonatra_default_value.type" />
             <argument>Foo\Bar</argument>
         </service>
