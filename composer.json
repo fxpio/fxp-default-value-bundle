@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Creates or injects the default values ​​with a advanced configuration in the object",
     "keywords": ["default value", "object", "entity", "document"],
-    "homepage": "https://github.com/sonatra/SonatraDefaultValueBundle",
+    "homepage": "https://github.com/sonatra/sonatra-default-value-bundle",
     "license": "MIT",
     "authors": [
         {
