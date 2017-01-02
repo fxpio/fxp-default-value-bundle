@@ -15,6 +15,7 @@ use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\SonatraDefaultValueExt
 use Sonatra\Bundle\DefaultValueBundle\SonatraDefaultValueBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
@@ -76,6 +77,14 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.custom'));
     }
 
+    public function testLoadDefaultTypeWithCustomConstructorAndResolveTarget()
+    {
+        $container = $this->getContainer(false, 'container_custom_resolve_target', array(
+            'Foo\BarInterface' => 'Foo\Bar',
+        ));
+        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.custom'));
+    }
+
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
      * @expectedExceptionMessage The service id "test.sonatra_default_value.type.custom" must have the "class" parameter in the "sonatra_default_value.type" tag.
@@ -88,12 +97,13 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * Gets the container.
      *
-     * @param bool   $empty    Compile container without extension
-     * @param string $services The services definition
+     * @param bool   $empty          Compile container without extension
+     * @param string $services       The services definition
+     * @param array  $resolveTargets The doctrine resolve targets
      *
      * @return ContainerBuilder
      */
-    protected function getContainer($empty = false, $services = null)
+    protected function getContainer($empty = false, $services = null, array $resolveTargets = array())
     {
         $container = new ContainerBuilder();
         $bundle = new SonatraDefaultValueBundle();
@@ -104,6 +114,15 @@ class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
             $container->registerExtension($extension);
             $config = array();
             $extension->load(array($config), $container);
+        }
+
+        if (!empty($resolveTargets)) {
+            $resolveDef = new Definition(\stdClass::class);
+            $container->setDefinition('doctrine.orm.listeners.resolve_target_entity', $resolveDef);
+
+            foreach ($resolveTargets as $class => $target) {
+                $resolveDef->addMethodCall('addResolveTargetEntity', array($class, $target));
+            }
         }
 
         if (null !== $services) {

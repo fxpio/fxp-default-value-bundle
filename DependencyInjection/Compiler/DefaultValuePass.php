@@ -28,6 +28,11 @@ use Symfony\Component\DependencyInjection\Definition;
 class DefaultValuePass implements CompilerPassInterface
 {
     /**
+     * @var array|null
+     */
+    private $resolveTargets;
+
+    /**
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container)
@@ -59,6 +64,8 @@ class DefaultValuePass implements CompilerPassInterface
             $class = isset($tag[0]['class'])
                 ? $this->getRealClassName($container, $tag[0]['class'])
                 : $this->getClassName($container, $serviceId, $tagName);
+            $class = $this->findResolveTarget($container, $class);
+            $this->replaceResolveTargetClass($container, $tagName, $serviceId, $class);
 
             // Flip, because we want tag classe names (= type identifiers) as keys
             if ($ext) {
@@ -132,5 +139,109 @@ class DefaultValuePass implements CompilerPassInterface
         }
 
         throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
+    }
+
+    /**
+     * Find the resolve target of class.
+     *
+     * @param ContainerBuilder $container The container
+     * @param string           $class     The class name
+     *
+     * @return string
+     */
+    private function findResolveTarget(ContainerBuilder $container, $class)
+    {
+        $resolveTargets = $this->getResolveTargets($container);
+
+        if (isset($resolveTargets[$class])) {
+            $class = $resolveTargets[$class];
+        }
+
+        return $class;
+    }
+
+    /**
+     * Get the resolve target classes.
+     *
+     * @param ContainerBuilder $container The container
+     *
+     * @return array
+     */
+    private function getResolveTargets(ContainerBuilder $container)
+    {
+        if (null === $this->resolveTargets) {
+            $this->resolveTargets = array();
+
+            if ($container->hasDefinition('doctrine.orm.listeners.resolve_target_entity')) {
+                $def = $container->getDefinition('doctrine.orm.listeners.resolve_target_entity');
+
+                foreach ($def->getMethodCalls() as $call) {
+                    if ('addResolveTargetEntity' === $call[0]) {
+                        $this->resolveTargets[$call[1][0]] = $call[1][1];
+                    }
+                }
+            }
+        }
+
+        return $this->resolveTargets;
+    }
+
+    /**
+     * Replace the resolve target class.
+     *
+     * @param ContainerBuilder $container The container service
+     * @param string           $tagName   The tag name
+     * @param string           $serviceId The service id of default value type
+     * @param string           $class     The class name
+     */
+    private function replaceResolveTargetClass(ContainerBuilder $container, $tagName, $serviceId, $class)
+    {
+        $def = $container->getDefinition($serviceId);
+
+        $this->replaceClassInArguments($container, $def, $class);
+        $this->replaceClassInTags($def, $tagName, $class);
+    }
+
+    /**
+     * Replace the resolve target class in the arguments of default value service.
+     *
+     * @param Definition $definition The service definition of default value
+     * @param string     $tagName    The tag name
+     * @param string     $class      The class name
+     */
+    private function replaceClassInTags(Definition $definition, $tagName, $class)
+    {
+        $tags = $definition->getTag($tagName);
+
+        $definition->clearTag($tagName);
+
+        foreach ($tags as &$tag) {
+            if (isset($tag['class'])) {
+                $tag['class'] = $class;
+            }
+
+            $definition->addTag($tagName, $tag);
+        }
+    }
+
+    /**
+     * Replace the resolve target class in the arguments of default value service.
+     *
+     * @param ContainerBuilder $container  The container service
+     * @param Definition       $definition The service definition of default value
+     * @param string           $class      The class name
+     */
+    private function replaceClassInArguments(ContainerBuilder $container, Definition $definition, $class)
+    {
+        $targets = $this->getResolveTargets($container);
+        $args = $definition->getArguments();
+
+        foreach ($args as &$arg) {
+            if (is_string($arg) && isset($targets[$arg])) {
+                $arg = $class;
+            }
+        }
+
+        $definition->setArguments($args);
     }
 }
