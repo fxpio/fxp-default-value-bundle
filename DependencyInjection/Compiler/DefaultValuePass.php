@@ -14,9 +14,9 @@ namespace Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler;
 use Sonatra\Component\DefaultValue\AbstractSimpleType;
 use Sonatra\Component\DefaultValue\ObjectTypeExtensionInterface;
 use Sonatra\Component\DefaultValue\ObjectTypeInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**

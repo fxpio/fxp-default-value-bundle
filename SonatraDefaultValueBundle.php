@@ -11,10 +11,10 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle;
 
-use Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler\DefaultValuePass;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author François Pluchino <francois.pluchino@sonatra.com>
