@@ -11,6 +11,7 @@
 
 namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\SonatraDefaultValueExtension;
 use Sonatra\Bundle\DefaultValueBundle\SonatraDefaultValueBundle;
 use Symfony\Component\Config\FileLocator;
@@ -23,7 +24,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  *
  * @author François Pluchino <francois.pluchino@sonatra.com>
  */
-class SonatraDefaultValueExtensionTest extends \PHPUnit_Framework_TestCase
+class SonatraDefaultValueExtensionTest extends TestCase
 {
     public function testCompileContainerWithExtension()
     {
