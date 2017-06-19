@@ -88,9 +88,7 @@ class DefaultValuePass implements CompilerPassInterface
      */
     protected function getRealClassName(ContainerBuilder $container, $classname)
     {
-        return 0 === strpos($classname, '%')
-            ? $container->getParameter(trim($classname, '%'))
-            : $classname;
+        return 0 === strpos($classname, '%') ? $container->getParameter(trim($classname, '%')) : $classname;
     }
 
     /**
