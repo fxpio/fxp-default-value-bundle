@@ -20,13 +20,13 @@
         </service>
 
         <!-- ObjectFactory -->
-        <service id="sonatra_default_value.factory" class="%sonatra_default_value.factory.class%">
+        <service id="sonatra_default_value.factory" class="%sonatra_default_value.factory.class%" public="true">
             <argument type="service" id="sonatra_default_value.registry" />
             <argument type="service" id="sonatra_default_value.resolved_type_factory" />
         </service>
 
         <!-- BlockRegistry -->
-        <service id="sonatra_default_value.registry" class="%sonatra_default_value.registry.class%">
+        <service id="sonatra_default_value.registry" class="%sonatra_default_value.registry.class%" public="true">
             <argument type="collection">
                 <!--
                 We don't need to be able to add more extensions.
@@ -42,7 +42,7 @@
         <service id="sonatra_default_value.resolved_type_factory" class="%sonatra_default_value.resolved_type_factory.class%" />
 
         <!-- CoreExtension -->
-        <service id="sonatra_default_value.type.default" class="Sonatra\Component\DefaultValue\Extension\Core\Type\DefaultType">
+        <service id="sonatra_default_value.type.default" class="Sonatra\Component\DefaultValue\Extension\Core\Type\DefaultType" public="true">
             <tag name="sonatra_default_value.type" class="default" />
         </service>
     </services>
