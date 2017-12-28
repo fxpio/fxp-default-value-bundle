@@ -1,14 +1,14 @@
 {
-    "name": "sonatra/default-value-bundle",
+    "name": "fxp/default-value-bundle",
     "type": "symfony-bundle",
     "description": "Creates or injects the default values ​​with a advanced configuration in the object",
     "keywords": ["default value", "object", "entity", "document"],
-    "homepage": "https://github.com/sonatra/sonatra-default-value-bundle",
+    "homepage": "https://github.com/fxpio/fxp-default-value-bundle",
     "license": "MIT",
     "authors": [
         {
             "name": "François Pluchino",
-            "email": "francois.pluchino@sonatra.com"
+            "email": "francois.pluchino@gmail.com"
         }
     ],
     "minimum-stability": "dev",
@@ -16,10 +16,10 @@
     "require": {
         "php": "^7.1.0",
         "symfony/framework-bundle": "^3.4.0|^4.0.0",
-        "sonatra/default-value": "^1.0.0"
+        "fxp/default-value": "^1.0.0"
     },
     "autoload": {
-        "psr-4": { "Sonatra\\Bundle\\DefaultValueBundle\\": "" },
+        "psr-4": { "Fxp\\Bundle\\DefaultValueBundle\\": "" },
         "exclude-from-classmap": [
             "/Tests/"
         ]

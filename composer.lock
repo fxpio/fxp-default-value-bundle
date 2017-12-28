@@ -4,8 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6464dc1b2e3653022666796afd1ce6fc",
+    "content-hash": "74bf6f394f29ef46d01f7e953aa04da0",
     "packages": [
+        {
+            "name": "fxp/default-value",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fxpio/fxp-default-value.git",
+                "reference": "53bd25a803a6c41ccfedfd5f41c020e8ecc557ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fxpio/fxp-default-value/zipball/53bd25a803a6c41ccfedfd5f41c020e8ecc557ce",
+                "reference": "53bd25a803a6c41ccfedfd5f41c020e8ecc557ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.0",
+                "symfony/options-resolver": "^3.4.0|^4.0.0",
+                "symfony/property-access": "^3.4.0|^4.0.0"
+            },
+            "require-dev": {
+                "symfony/dependency-injection": "^3.4.0|^4.0.0",
+                "symfony/security": "^3.4.0|^4.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fxp\\Component\\DefaultValue\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Pluchino",
+                    "email": "francois.pluchino@gmail.com"
+                }
+            ],
+            "description": "Creates or injects the default values ​​with a advanced configuration in the object",
+            "homepage": "https://github.com/fxpio/fxp-default-value",
+            "keywords": [
+                "default value",
+                "document",
+                "entity",
+                "object"
+            ],
+            "time": "2017-12-28T18:23:55+00:00"
+        },
         {
             "name": "psr/cache",
             "version": "1.0.1",
@@ -195,63 +252,6 @@
                 "simple-cache"
             ],
             "time": "2017-01-02T13:31:39+00:00"
-        },
-        {
-            "name": "sonatra/default-value",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sonatra/sonatra-default-value.git",
-                "reference": "3fea0b4cf2acf0a4b2a85d1263c13255938ee9d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sonatra/sonatra-default-value/zipball/3fea0b4cf2acf0a4b2a85d1263c13255938ee9d9",
-                "reference": "3fea0b4cf2acf0a4b2a85d1263c13255938ee9d9",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1.0",
-                "symfony/options-resolver": "^3.4.0|^4.0.0",
-                "symfony/property-access": "^3.4.0|^4.0.0"
-            },
-            "require-dev": {
-                "symfony/dependency-injection": "^3.4.0|^4.0.0",
-                "symfony/security": "^3.4.0|^4.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sonatra\\Component\\DefaultValue\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Pluchino",
-                    "email": "francois.pluchino@sonatra.com"
-                }
-            ],
-            "description": "Creates or injects the default values ​​with a advanced configuration in the object",
-            "homepage": "https://github.com/sonatra/sonatra-default-value",
-            "keywords": [
-                "default value",
-                "document",
-                "entity",
-                "object"
-            ],
-            "time": "2017-12-26T15:45:17+00:00"
         },
         {
             "name": "symfony/cache",

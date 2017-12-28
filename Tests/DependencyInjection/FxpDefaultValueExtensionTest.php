@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection;
+namespace Fxp\Bundle\DefaultValueBundle\Tests\DependencyInjection;
 
+use Fxp\Bundle\DefaultValueBundle\DependencyInjection\FxpDefaultValueExtension;
+use Fxp\Bundle\DefaultValueBundle\FxpDefaultValueBundle;
 use PHPUnit\Framework\TestCase;
-use Sonatra\Bundle\DefaultValueBundle\DependencyInjection\SonatraDefaultValueExtension;
-use Sonatra\Bundle\DefaultValueBundle\SonatraDefaultValueBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -22,29 +22,29 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 /**
  * Bundle Extension Tests.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
-class SonatraDefaultValueExtensionTest extends TestCase
+class FxpDefaultValueExtensionTest extends TestCase
 {
     public function testCompileContainerWithExtension()
     {
         $container = $this->getContainer();
-        $this->assertTrue($container->hasDefinition('sonatra_default_value.extension'));
-        $this->assertTrue($container->hasDefinition('sonatra_default_value.registry'));
-        $this->assertTrue($container->hasDefinition('sonatra_default_value.resolved_type_factory'));
+        $this->assertTrue($container->hasDefinition('fxp_default_value.extension'));
+        $this->assertTrue($container->hasDefinition('fxp_default_value.registry'));
+        $this->assertTrue($container->hasDefinition('fxp_default_value.resolved_type_factory'));
     }
 
     public function testCompileContainerWithoutExtension()
     {
         $container = $this->getContainer(true);
-        $this->assertFalse($container->hasDefinition('sonatra_default_value.extension'));
-        $this->assertFalse($container->hasDefinition('sonatra_default_value.registry'));
-        $this->assertFalse($container->hasDefinition('sonatra_default_value.resolved_type_factory'));
+        $this->assertFalse($container->hasDefinition('fxp_default_value.extension'));
+        $this->assertFalse($container->hasDefinition('fxp_default_value.registry'));
+        $this->assertFalse($container->hasDefinition('fxp_default_value.resolved_type_factory'));
     }
 
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.sonatra_default_value.type.invalid" must an instance of "Sonatra\Component\DefaultValue\ObjectTypeInterface"
+     * @expectedExceptionMessage The service id "test.fxp_default_value.type.invalid" must an instance of "Fxp\Component\DefaultValue\ObjectTypeInterface"
      */
     public function testLoadExtensionWithoutClassname()
     {
@@ -54,12 +54,12 @@ class SonatraDefaultValueExtensionTest extends TestCase
     public function testLoadDefaultExtensionWithClassname()
     {
         $container = $this->getContainer(false, 'container_extension');
-        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.default'));
+        $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.default'));
     }
 
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.sonatra_default_value.type.default" must have the "class" parameter in the "sonatra_default_value.type_extension
+     * @expectedExceptionMessage The service id "test.fxp_default_value.type.default" must have the "class" parameter in the "fxp_default_value.type_extension
      */
     public function testLoadDefaultExtensionWithoutClassname()
     {
@@ -69,13 +69,13 @@ class SonatraDefaultValueExtensionTest extends TestCase
     public function testLoadDefaultTypeWithSimpleType()
     {
         $container = $this->getContainer(false, 'container_custom_simple');
-        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.simple'));
+        $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.simple'));
     }
 
     public function testLoadDefaultTypeWithCustomConstructor()
     {
         $container = $this->getContainer(false, 'container_custom');
-        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.custom'));
+        $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.custom'));
     }
 
     public function testLoadDefaultTypeWithCustomConstructorAndResolveTarget()
@@ -83,12 +83,12 @@ class SonatraDefaultValueExtensionTest extends TestCase
         $container = $this->getContainer(false, 'container_custom_resolve_target', array(
             'Foo\BarInterface' => 'Foo\Bar',
         ));
-        $this->assertTrue($container->hasDefinition('test.sonatra_default_value.type.custom'));
+        $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.custom'));
     }
 
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.sonatra_default_value.type.custom" must have the "class" parameter in the "sonatra_default_value.type" tag.
+     * @expectedExceptionMessage The service id "test.fxp_default_value.type.custom" must have the "class" parameter in the "fxp_default_value.type" tag.
      */
     public function testLoadDefaultTypeWithCustomConstructorWithoutClassname()
     {
@@ -107,11 +107,11 @@ class SonatraDefaultValueExtensionTest extends TestCase
     protected function getContainer($empty = false, $services = null, array $resolveTargets = array())
     {
         $container = new ContainerBuilder();
-        $bundle = new SonatraDefaultValueBundle();
+        $bundle = new FxpDefaultValueBundle();
         $bundle->build($container); // Attach all default factories
 
         if (!$empty) {
-            $extension = new SonatraDefaultValueExtension();
+            $extension = new FxpDefaultValueExtension();
             $container->registerExtension($extension);
             $config = array();
             $extension->load(array($config), $container);

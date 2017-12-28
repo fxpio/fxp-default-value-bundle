@@ -6,8 +6,8 @@
 
     <services>
         <!-- CoreExtension -->
-        <service id="test.sonatra_default_value.type.default" class="Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension\DefaultExtension">
-            <tag name="sonatra_default_value.type_extension" />
+        <service id="test.fxp_default_value.type.default" class="Fxp\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension\DefaultExtension">
+            <tag name="fxp_default_value.type_extension" />
         </service>
     </services>
 </container>

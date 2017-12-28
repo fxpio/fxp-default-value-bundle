@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension;
+namespace Fxp\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Extension;
 
-use Sonatra\Component\DefaultValue\AbstractTypeExtension;
-use Sonatra\Component\DefaultValue\ObjectBuilderInterface;
+use Fxp\Component\DefaultValue\AbstractTypeExtension;
+use Fxp\Component\DefaultValue\ObjectBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Default Value Extension.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DefaultExtension extends AbstractTypeExtension
 {

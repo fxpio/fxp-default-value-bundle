@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Type;
+namespace Fxp\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Type;
 
-use Sonatra\Component\DefaultValue\AbstractSimpleType;
+use Fxp\Component\DefaultValue\AbstractSimpleType;
 
 /**
  * Invalid default value type.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class CustomType extends AbstractSimpleType
 {

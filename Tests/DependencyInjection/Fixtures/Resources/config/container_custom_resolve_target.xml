@@ -6,8 +6,8 @@
 
     <services>
         <!-- CoreExtension -->
-        <service id="test.sonatra_default_value.type.custom" class="Sonatra\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Type\CustomType">
-            <tag name="sonatra_default_value.type" class="Foo\BarInterface" />
+        <service id="test.fxp_default_value.type.custom" class="Fxp\Bundle\DefaultValueBundle\Tests\DependencyInjection\Fixtures\Type\CustomType">
+            <tag name="fxp_default_value.type" class="Foo\BarInterface" />
             <argument>Foo\BarInterface</argument>
             <argument>true</argument>
         </service>

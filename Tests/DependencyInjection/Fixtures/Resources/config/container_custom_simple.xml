@@ -6,8 +6,8 @@
 
     <services>
         <!-- CoreExtension -->
-        <service id="test.sonatra_default_value.type.simple" class="Sonatra\Component\DefaultValue\Extension\Core\Type\DefaultType">
-            <tag name="sonatra_default_value.type" />
+        <service id="test.fxp_default_value.type.simple" class="Fxp\Component\DefaultValue\Extension\Core\Type\DefaultType">
+            <tag name="fxp_default_value.type" />
             <argument>Foo\Bar</argument>
         </service>
     </services>

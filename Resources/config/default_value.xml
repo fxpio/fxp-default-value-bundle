@@ -5,45 +5,45 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="sonatra_default_value.extension.class">Sonatra\Component\DefaultValue\Extension\DependencyInjection\DependencyInjectionExtension</parameter>
-        <parameter key="sonatra_default_value.factory.class">Sonatra\Component\DefaultValue\ObjectFactory</parameter>
-        <parameter key="sonatra_default_value.registry.class">Sonatra\Component\DefaultValue\ObjectRegistry</parameter>
-        <parameter key="sonatra_default_value.resolved_type_factory.class">Sonatra\Component\DefaultValue\ResolvedObjectTypeFactory</parameter>
+        <parameter key="fxp_default_value.extension.class">Fxp\Component\DefaultValue\Extension\DependencyInjection\DependencyInjectionExtension</parameter>
+        <parameter key="fxp_default_value.factory.class">Fxp\Component\DefaultValue\ObjectFactory</parameter>
+        <parameter key="fxp_default_value.registry.class">Fxp\Component\DefaultValue\ObjectRegistry</parameter>
+        <parameter key="fxp_default_value.resolved_type_factory.class">Fxp\Component\DefaultValue\ResolvedObjectTypeFactory</parameter>
     </parameters>
 
     <services>
         <!-- DependencyInjectionExtension -->
-        <service id="sonatra_default_value.extension" class="%sonatra_default_value.extension.class%" public="false">
+        <service id="fxp_default_value.extension" class="%fxp_default_value.extension.class%" public="false">
             <property name="container" type="service" id="service_container" />
             <argument type="collection" />
             <argument type="collection" />
         </service>
 
         <!-- ObjectFactory -->
-        <service id="sonatra_default_value.factory" class="%sonatra_default_value.factory.class%" public="true">
-            <argument type="service" id="sonatra_default_value.registry" />
-            <argument type="service" id="sonatra_default_value.resolved_type_factory" />
+        <service id="fxp_default_value.factory" class="%fxp_default_value.factory.class%" public="true">
+            <argument type="service" id="fxp_default_value.registry" />
+            <argument type="service" id="fxp_default_value.resolved_type_factory" />
         </service>
 
         <!-- BlockRegistry -->
-        <service id="sonatra_default_value.registry" class="%sonatra_default_value.registry.class%" public="true">
+        <service id="fxp_default_value.registry" class="%fxp_default_value.registry.class%" public="true">
             <argument type="collection">
                 <!--
                 We don't need to be able to add more extensions.
-                 * more types can be registered with the sonatra_default_value.type tag
-                 * more type extensions can be registered with the sonatra_default_value.type_extension tag
+                 * more types can be registered with the fxp_default_value.type tag
+                 * more type extensions can be registered with the fxp_default_value.type_extension tag
                 -->
-                <argument type="service" id="sonatra_default_value.extension" />
+                <argument type="service" id="fxp_default_value.extension" />
             </argument>
-            <argument type="service" id="sonatra_default_value.resolved_type_factory" />
+            <argument type="service" id="fxp_default_value.resolved_type_factory" />
         </service>
 
         <!-- ResolvedBlockTypeFactory -->
-        <service id="sonatra_default_value.resolved_type_factory" class="%sonatra_default_value.resolved_type_factory.class%" />
+        <service id="fxp_default_value.resolved_type_factory" class="%fxp_default_value.resolved_type_factory.class%" />
 
         <!-- CoreExtension -->
-        <service id="sonatra_default_value.type.default" class="Sonatra\Component\DefaultValue\Extension\Core\Type\DefaultType" public="true">
-            <tag name="sonatra_default_value.type" class="default" />
+        <service id="fxp_default_value.type.default" class="Fxp\Component\DefaultValue\Extension\Core\Type\DefaultType" public="true">
+            <tag name="fxp_default_value.type" class="default" />
         </service>
     </services>
 </container>

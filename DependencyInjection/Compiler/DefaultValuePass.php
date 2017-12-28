@@ -1,29 +1,29 @@
 <?php
 
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Sonatra\Bundle\DefaultValueBundle\DependencyInjection\Compiler;
+namespace Fxp\Bundle\DefaultValueBundle\DependencyInjection\Compiler;
 
-use Sonatra\Component\DefaultValue\AbstractSimpleType;
-use Sonatra\Component\DefaultValue\ObjectTypeExtensionInterface;
-use Sonatra\Component\DefaultValue\ObjectTypeInterface;
+use Fxp\Component\DefaultValue\AbstractSimpleType;
+use Fxp\Component\DefaultValue\ObjectTypeExtensionInterface;
+use Fxp\Component\DefaultValue\ObjectTypeInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
- * Adds all services with the tags "sonatra_default_value.type" as arguments of
- * the "sonatra_default_value.extension" service.
+ * Adds all services with the tags "fxp_default_value.type" as arguments of
+ * the "fxp_default_value.extension" service.
  *
- * @author François Pluchino <francois.pluchino@sonatra.com>
+ * @author François Pluchino <francois.pluchino@gmail.com>
  */
 class DefaultValuePass implements CompilerPassInterface
 {
@@ -37,13 +37,13 @@ class DefaultValuePass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('sonatra_default_value.extension')) {
+        if (!$container->hasDefinition('fxp_default_value.extension')) {
             return;
         }
 
         // Builds an array with service IDs as keys and tag class names as values
-        $this->findTags($container, 'sonatra_default_value.type', 0);
-        $this->findTags($container, 'sonatra_default_value.type_extension', 1, true);
+        $this->findTags($container, 'fxp_default_value.type', 0);
+        $this->findTags($container, 'fxp_default_value.type_extension', 1, true);
     }
 
     /**
@@ -75,7 +75,7 @@ class DefaultValuePass implements CompilerPassInterface
             }
         }
 
-        $container->getDefinition('sonatra_default_value.extension')->replaceArgument($argumentPosition, $services);
+        $container->getDefinition('fxp_default_value.extension')->replaceArgument($argumentPosition, $services);
     }
 
     /**
@@ -100,7 +100,7 @@ class DefaultValuePass implements CompilerPassInterface
      *
      * @return string
      *
-     * @throws InvalidConfigurationException When the service is not an instance of Sonatra\Component\DefaultValue\ObjectTypeInterface
+     * @throws InvalidConfigurationException When the service is not an instance of Fxp\Component\DefaultValue\ObjectTypeInterface
      */
     protected function getClassName(ContainerBuilder $container, $serviceId, $tagName)
     {
@@ -110,7 +110,7 @@ class DefaultValuePass implements CompilerPassInterface
         if (in_array(ObjectTypeExtensionInterface::class, $interfaces)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
         } elseif (!in_array(ObjectTypeInterface::class, $interfaces)) {
-            throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Sonatra\Component\DefaultValue\ObjectTypeInterface'));
+            throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Fxp\Component\DefaultValue\ObjectTypeInterface'));
         }
 
         return $this->buildInstanceType($type, $serviceId, $tagName)->getClass();
