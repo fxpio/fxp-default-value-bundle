@@ -80,9 +80,9 @@ class FxpDefaultValueExtensionTest extends TestCase
 
     public function testLoadDefaultTypeWithCustomConstructorAndResolveTarget()
     {
-        $container = $this->getContainer(false, 'container_custom_resolve_target', array(
+        $container = $this->getContainer(false, 'container_custom_resolve_target', [
             'Foo\BarInterface' => 'Foo\Bar',
-        ));
+        ]);
         $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.custom'));
     }
 
@@ -104,7 +104,7 @@ class FxpDefaultValueExtensionTest extends TestCase
      *
      * @return ContainerBuilder
      */
-    protected function getContainer($empty = false, $services = null, array $resolveTargets = array())
+    protected function getContainer($empty = false, $services = null, array $resolveTargets = [])
     {
         $container = new ContainerBuilder();
         $bundle = new FxpDefaultValueBundle();
@@ -113,8 +113,8 @@ class FxpDefaultValueExtensionTest extends TestCase
         if (!$empty) {
             $extension = new FxpDefaultValueExtension();
             $container->registerExtension($extension);
-            $config = array();
-            $extension->load(array($config), $container);
+            $config = [];
+            $extension->load([$config], $container);
         }
 
         if (!empty($resolveTargets)) {
@@ -122,7 +122,7 @@ class FxpDefaultValueExtensionTest extends TestCase
             $container->setDefinition('doctrine.orm.listeners.resolve_target_entity', $resolveDef);
 
             foreach ($resolveTargets as $class => $target) {
-                $resolveDef->addMethodCall('addResolveTargetEntity', array($class, $target));
+                $resolveDef->addMethodCall('addResolveTargetEntity', [$class, $target]);
             }
         }
 
@@ -131,7 +131,7 @@ class FxpDefaultValueExtensionTest extends TestCase
             $load->load($services.'.xml');
         }
 
-        $container->getCompilerPassConfig()->setRemovingPasses(array());
+        $container->getCompilerPassConfig()->setRemovingPasses([]);
         $container->compile();
 
         return $container;

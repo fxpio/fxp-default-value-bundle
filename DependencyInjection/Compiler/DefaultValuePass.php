@@ -58,7 +58,7 @@ class DefaultValuePass implements CompilerPassInterface
      */
     protected function findTags(ContainerBuilder $container, $tagName, $argumentPosition, $ext = false)
     {
-        $services = array();
+        $services = [];
 
         foreach ($container->findTaggedServiceIds($tagName) as $serviceId => $tag) {
             $class = isset($tag[0]['class'])
@@ -168,7 +168,7 @@ class DefaultValuePass implements CompilerPassInterface
     private function getResolveTargets(ContainerBuilder $container)
     {
         if (null === $this->resolveTargets) {
-            $this->resolveTargets = array();
+            $this->resolveTargets = [];
 
             if ($container->hasDefinition('doctrine.orm.listeners.resolve_target_entity')) {
                 $def = $container->getDefinition('doctrine.orm.listeners.resolve_target_entity');

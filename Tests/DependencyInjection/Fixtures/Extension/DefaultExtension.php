@@ -41,11 +41,11 @@ class DefaultExtension extends AbstractTypeExtension
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'test' => null,
-        ));
+        ]);
 
-        $resolver->addAllowedTypes('test', array('null', 'string'));
+        $resolver->addAllowedTypes('test', ['null', 'string']);
     }
 
     /**
