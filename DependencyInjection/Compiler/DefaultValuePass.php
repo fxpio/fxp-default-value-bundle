@@ -107,9 +107,9 @@ class DefaultValuePass implements CompilerPassInterface
         $type = $container->getDefinition($serviceId);
         $interfaces = class_implements($type->getClass());
 
-        if (in_array(ObjectTypeExtensionInterface::class, $interfaces)) {
+        if (\in_array(ObjectTypeExtensionInterface::class, $interfaces)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
-        } elseif (!in_array(ObjectTypeInterface::class, $interfaces)) {
+        } elseif (!\in_array(ObjectTypeInterface::class, $interfaces)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Fxp\Component\DefaultValue\ObjectTypeInterface'));
         }
 
@@ -131,8 +131,8 @@ class DefaultValuePass implements CompilerPassInterface
         $args = $type->getArguments();
         $ref = new \ReflectionClass($type);
 
-        if (in_array(AbstractSimpleType::class, $parents)
-                && (0 === count($args) || (1 === count($args) && is_string($args[0])))) {
+        if (\in_array(AbstractSimpleType::class, $parents)
+                && (0 === \count($args) || (1 === \count($args) && \is_string($args[0])))) {
             return $ref->newInstanceArgs($args);
         }
 
@@ -235,7 +235,7 @@ class DefaultValuePass implements CompilerPassInterface
         $args = $definition->getArguments();
 
         foreach ($args as &$arg) {
-            if (is_string($arg) && isset($targets[$arg])) {
+            if (\is_string($arg) && isset($targets[$arg])) {
                 $arg = $class;
             }
         }
