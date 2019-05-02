@@ -25,21 +25,21 @@ class DefaultExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function buildObject(ObjectBuilderInterface $builder, array $options)
+    public function buildObject(ObjectBuilderInterface $builder, array $options): void
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function finishObject(ObjectBuilderInterface $builder, array $options)
+    public function finishObject(ObjectBuilderInterface $builder, array $options): void
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'test' => null,

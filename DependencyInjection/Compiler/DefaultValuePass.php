@@ -28,14 +28,14 @@ use Symfony\Component\DependencyInjection\Definition;
 class DefaultValuePass implements CompilerPassInterface
 {
     /**
-     * @var array|null
+     * @var null|array
      */
     private $resolveTargets;
 
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('fxp_default_value.extension')) {
             return;
@@ -56,7 +56,7 @@ class DefaultValuePass implements CompilerPassInterface
      *
      * @throws InvalidConfigurationException
      */
-    protected function findTags(ContainerBuilder $container, $tagName, $argumentPosition, $ext = false)
+    protected function findTags(ContainerBuilder $container, $tagName, $argumentPosition, $ext = false): void
     {
         $services = [];
 
@@ -98,18 +98,19 @@ class DefaultValuePass implements CompilerPassInterface
      * @param string           $serviceId The service id of default value type
      * @param string           $tagName   The tag name
      *
-     * @return string
-     *
      * @throws InvalidConfigurationException When the service is not an instance of Fxp\Component\DefaultValue\ObjectTypeInterface
+     *
+     * @return string
      */
     protected function getClassName(ContainerBuilder $container, $serviceId, $tagName)
     {
         $type = $container->getDefinition($serviceId);
         $interfaces = class_implements($type->getClass());
 
-        if (\in_array(ObjectTypeExtensionInterface::class, $interfaces)) {
+        if (\in_array(ObjectTypeExtensionInterface::class, $interfaces, true)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must have the "class" parameter in the "%s" tag.', $serviceId, $tagName));
-        } elseif (!\in_array(ObjectTypeInterface::class, $interfaces)) {
+        }
+        if (!\in_array(ObjectTypeInterface::class, $interfaces, true)) {
             throw new InvalidConfigurationException(sprintf('The service id "%s" must an instance of "%s"', $serviceId, 'Fxp\Component\DefaultValue\ObjectTypeInterface'));
         }
 
@@ -131,7 +132,7 @@ class DefaultValuePass implements CompilerPassInterface
         $args = $type->getArguments();
         $ref = new \ReflectionClass($type);
 
-        if (\in_array(AbstractSimpleType::class, $parents)
+        if (\in_array(AbstractSimpleType::class, $parents, true)
                 && (0 === \count($args) || (1 === \count($args) && \is_string($args[0])))) {
             return $ref->newInstanceArgs($args);
         }
@@ -192,7 +193,7 @@ class DefaultValuePass implements CompilerPassInterface
      * @param string           $serviceId The service id of default value type
      * @param string           $class     The class name
      */
-    private function replaceResolveTargetClass(ContainerBuilder $container, $tagName, $serviceId, $class)
+    private function replaceResolveTargetClass(ContainerBuilder $container, $tagName, $serviceId, $class): void
     {
         $def = $container->getDefinition($serviceId);
 
@@ -207,7 +208,7 @@ class DefaultValuePass implements CompilerPassInterface
      * @param string     $tagName    The tag name
      * @param string     $class      The class name
      */
-    private function replaceClassInTags(Definition $definition, $tagName, $class)
+    private function replaceClassInTags(Definition $definition, $tagName, $class): void
     {
         $tags = $definition->getTag($tagName);
 
@@ -229,7 +230,7 @@ class DefaultValuePass implements CompilerPassInterface
      * @param Definition       $definition The service definition of default value
      * @param string           $class      The class name
      */
-    private function replaceClassInArguments(ContainerBuilder $container, Definition $definition, $class)
+    private function replaceClassInArguments(ContainerBuilder $container, Definition $definition, $class): void
     {
         $targets = $this->getResolveTargets($container);
         $args = $definition->getArguments();

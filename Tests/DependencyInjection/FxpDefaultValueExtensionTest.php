@@ -23,10 +23,12 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  * Bundle Extension Tests.
  *
  * @author François Pluchino <francois.pluchino@gmail.com>
+ *
+ * @internal
  */
-class FxpDefaultValueExtensionTest extends TestCase
+final class FxpDefaultValueExtensionTest extends TestCase
 {
-    public function testCompileContainerWithExtension()
+    public function testCompileContainerWithExtension(): void
     {
         $container = $this->getContainer();
         $this->assertTrue($container->hasDefinition('fxp_default_value.extension'));
@@ -34,7 +36,7 @@ class FxpDefaultValueExtensionTest extends TestCase
         $this->assertTrue($container->hasDefinition('fxp_default_value.resolved_type_factory'));
     }
 
-    public function testCompileContainerWithoutExtension()
+    public function testCompileContainerWithoutExtension(): void
     {
         $container = $this->getContainer(true);
         $this->assertFalse($container->hasDefinition('fxp_default_value.extension'));
@@ -42,43 +44,41 @@ class FxpDefaultValueExtensionTest extends TestCase
         $this->assertFalse($container->hasDefinition('fxp_default_value.resolved_type_factory'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.fxp_default_value.type.invalid" must an instance of "Fxp\Component\DefaultValue\ObjectTypeInterface"
-     */
-    public function testLoadExtensionWithoutClassname()
+    public function testLoadExtensionWithoutClassname(): void
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectExceptionMessage('The service id "test.fxp_default_value.type.invalid" must an instance of "Fxp\\Component\\DefaultValue\\ObjectTypeInterface"');
+
         $this->getContainer(false, 'container_exception');
     }
 
-    public function testLoadDefaultExtensionWithClassname()
+    public function testLoadDefaultExtensionWithClassname(): void
     {
         $container = $this->getContainer(false, 'container_extension');
         $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.default'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.fxp_default_value.type.default" must have the "class" parameter in the "fxp_default_value.type_extension
-     */
-    public function testLoadDefaultExtensionWithoutClassname()
+    public function testLoadDefaultExtensionWithoutClassname(): void
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectExceptionMessage('The service id "test.fxp_default_value.type.default" must have the "class" parameter in the "fxp_default_value.type_extension');
+
         $this->getContainer(false, 'container_extension_exception');
     }
 
-    public function testLoadDefaultTypeWithSimpleType()
+    public function testLoadDefaultTypeWithSimpleType(): void
     {
         $container = $this->getContainer(false, 'container_custom_simple');
         $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.simple'));
     }
 
-    public function testLoadDefaultTypeWithCustomConstructor()
+    public function testLoadDefaultTypeWithCustomConstructor(): void
     {
         $container = $this->getContainer(false, 'container_custom');
         $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.custom'));
     }
 
-    public function testLoadDefaultTypeWithCustomConstructorAndResolveTarget()
+    public function testLoadDefaultTypeWithCustomConstructorAndResolveTarget(): void
     {
         $container = $this->getContainer(false, 'container_custom_resolve_target', [
             'Foo\BarInterface' => 'Foo\Bar',
@@ -86,12 +86,11 @@ class FxpDefaultValueExtensionTest extends TestCase
         $this->assertTrue($container->hasDefinition('test.fxp_default_value.type.custom'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The service id "test.fxp_default_value.type.custom" must have the "class" parameter in the "fxp_default_value.type" tag.
-     */
-    public function testLoadDefaultTypeWithCustomConstructorWithoutClassname()
+    public function testLoadDefaultTypeWithCustomConstructorWithoutClassname(): void
     {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+        $this->expectExceptionMessage('The service id "test.fxp_default_value.type.custom" must have the "class" parameter in the "fxp_default_value.type" tag.');
+
         $this->getContainer(false, 'container_custom_exception');
     }
 
